@@ -1,0 +1,33 @@
+{
+  "name": "study_night",
+  "version": "1.0.0",
+  "description": "Study Night App",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "gulp": "gulp",
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udacity/nd0011-c4-starter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/udacity/nd0011-c4-starter/issues"
+  },
+  "homepage": "https://github.com/udacity/nd0011-c4-starter#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.26.0",
+    "chai": "^5.2.0",
+    "cypress": "^14.3.3",
+    "eslint": "^9.26.0",
+    "globals": "^16.1.0",
+    "gulp": "^5.0.0",
+    "gulp-cli": "^3.0.0",
+    "gulp-shell": "^0.8.0",
+    "mocha": "^11.2.2",
+    "parcel": "^2.14.4"
+  }
+}
