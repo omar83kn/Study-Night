@@ -1,21 +1,21 @@
 /* global cy */
 
-describe("Form Testing", () => {
+describe("Create / Add Card forms", () => {
   beforeEach(() => {
     cy.visit("http://localhost:1234");
+    cy.contains("Card Sets").click();              // go to library page
   });
 
-  it("Creates a card set correctly", () => {
-    cy.contains("Create Set").click();
-    cy.get("#set-title").type("Test");
-    cy.get("#set-description").type("A description for the set");
+  it("creates a new Study Set (happy path)", () => {
+    cy.get('[data-cy="toggle_form"]').click();     // open the form
+    cy.get("#titleInput").type("Test Set");        // only title is required
     cy.get("form").submit();
-    cy.contains("Test");
+    cy.contains("Test Set").should("exist");
   });
 
-  it("Shows an error when fields are left empty", () => {
-    cy.contains("Create Set").click();
+  it("shows validation errors (unhappy path)", () => {
+    cy.get('[data-cy="toggle_form"]').click();
     cy.get("form").submit();
-    cy.contains("Please enter a title");
+    cy.contains("TITLE CANNOT BE EMPTY").should("exist");
   });
 });

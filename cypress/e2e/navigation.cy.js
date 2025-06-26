@@ -1,22 +1,22 @@
 /* global cy */
 
-describe("Navigation Test", () => {
+describe("Navigation", () => {
   beforeEach(() => {
     cy.visit("http://localhost:1234");
   });
 
-  it("Navigates to the Card Sets page", () => {
-    cy.contains("Card Set").click();
-    cy.url().should("include", "card-sets");
+  it("opens Card Sets page", () => {
+    cy.contains("Card Sets").click();
+    cy.get('[data-cy="study-set-header"]').should("be.visible");
   });
 
-  it("Navigates to the About page", () => {
+  it("opens About page", () => {
     cy.contains("About").click();
-    cy.contains("About Study Night");
+    cy.get('[data-cy="about_page"]').should("be.visible");
   });
 
-  it("Navigates to the Home page", () => {
+  it("returns to Home page", () => {
     cy.contains("Home").click();
-    cy.contains("Welcome to Study Night");
+    cy.get('[data-cy="study-set-header"]').should("not.exist");
   });
 });

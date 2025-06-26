@@ -10,7 +10,7 @@ body main div .aboutContainer {
 
 body main div .aboutContainer {}
 
-body main div .aboutContainer img {
+.aboutContainer img {
   width: 400px;
   height: 300px;
   border-radius: 10%;

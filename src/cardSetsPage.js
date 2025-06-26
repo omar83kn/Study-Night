@@ -2,26 +2,33 @@ import { cardSets } from "../data/data.js";
 import { renderFlashCards } from "./cardsPage.js";
 import { createSetForm } from "./createSet.js";
 import { createHeader, createToggleButton } from "./utilityRenderFunctions.js";
+
 export const renderCardSetsPage = () => {
   const container = document.createElement("div");
   container.className = "cardPageContainer";
-  const pageHeader = createHeader(
-    "h2",
-    "Study Set Library",
-    "study-set-header"
-  );
 
-  const sets = createCardSets();
-  const form = createSetForm(cardSets);
+  // page heading
+  const pageHeader = createHeader("h2", "Study Set Library", "study-set-header");
+
+  // list + form
+  const sets  = createCardSets();
+  const form  = createSetForm(cardSets);
+
+  // *** Cypress selector added here ***
   const toggleFormButton = createToggleButton("Add New Set", form);
   toggleFormButton.setAttribute("data-cy", "toggle_form");
 
   container.append(pageHeader, sets, toggleFormButton, form);
 
+  // mount page
   const main = document.querySelector("main");
   main.innerHTML = "";
   main.append(container);
 };
+
+// ---------------------------------------------------------------------------
+// helpers
+// ---------------------------------------------------------------------------
 
 const createSetPreviewCard = (set, setContainer) => {
   const setCard = document.createElement("ul");
@@ -32,7 +39,7 @@ const createSetPreviewCard = (set, setContainer) => {
   liTitle.textContent = set.title;
 
   const liNumberOfTerms = document.createElement("li");
-  liNumberOfTerms.textContent = `Terms: ${set.cards.length}`;
+  liNumberOfTerms.textContent = `${set.cards.length} terms`;
 
   setCard.addEventListener("click", () => {
     document.querySelector("main").innerHTML = "";
